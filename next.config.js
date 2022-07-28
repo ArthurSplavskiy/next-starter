@@ -1,7 +1,16 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+const StylelintPlugin = require("stylelint-webpack-plugin"); // line to add
 
-module.exports = nextConfig
+module.exports = {
+	webpack: (config, options) => {
+		config.module.rules.push({
+			test: /\.svg$/,
+			issuer: /\.(js|ts)x?$/,
+			use: ['@svgr/webpack'],
+		});
+		config.plugins.push(new StylelintPlugin());
+
+		return config;
+	},
+	// assetPrefix: './',
+	// trailingSlash: true,
+};
