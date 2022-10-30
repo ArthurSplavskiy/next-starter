@@ -1,17 +1,36 @@
+import { useState } from 'react';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
-import '../styles/globals.scss';
+
+import { CookiesProvider } from 'react-cookie';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { CommonProvider } from '@Context/common';
+
+import '@Styles/main.scss';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+	const { currency, ...rest } = pageProps;
+
+	const [queryClient] = useState(
+		() =>
+			new QueryClient({
+				defaultOptions: {
+					queries: {
+						refetchOnWindowFocus: false
+					}
+				}
+			})
+	);
+
 	return (
-		<>
-			<Head>
-				<title>Next Starter</title>
-				{/* <meta property='og:url' content='/'></meta> */}
-				<meta property='og:locale' content='uk_UK'></meta>
-			</Head>
-			<Component {...pageProps} />
-		</>
+		<QueryClientProvider client={queryClient}>
+			<Hydrate state={rest.dehydratedState}>
+				<CookiesProvider>
+					<CommonProvider currency={currency}>
+						<Component {...rest} />
+					</CommonProvider>
+				</CookiesProvider>
+			</Hydrate>
+		</QueryClientProvider>
 	);
 }
 

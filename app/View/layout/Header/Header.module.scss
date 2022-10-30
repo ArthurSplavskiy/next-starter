@@ -14,7 +14,7 @@
 	left: 0;
 	overflow: auto;
 	padding: 20px 10px;
-	background: #F5F6F8;
+	background: #f5f6f8;
 }
 
 .menu-close {
@@ -24,7 +24,7 @@
 	right: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 	.header {
 		display: none;
 	}
