@@ -17,17 +17,17 @@
 		"baseUrl": ".",
 		"paths": {
 			"@Styles/*": ["styles/*"],
-			"@Context/*": ["app/Context/*"],
-			"@Hooks/*": ["app/Hooks/*"],
-			"@Services/*": ["app/Services/*"],
-			"@GraphQL/*": ["app/Services/GraphQL/*"],
-			"@Types/*": ["app/Types/*"],
-			"@Utils/*": ["app/Utils/*"],
-			"@Components/*": ["app/View/components/*"],
-			"@Layout/*": ["app/View/layout/*"],
-			"@Modules/*": ["app/View/modules/*"],
-			"@Pages/*": ["app/View/pages/*"],
-			"@Section/*": ["app/View/section/*"]
+			"@Context/*": ["src/Context/*"],
+			"@Hooks/*": ["src/Hooks/*"],
+			"@Services/*": ["src/Services/*"],
+			"@GraphQL/*": ["src/Services/GraphQL/*"],
+			"@Types/*": ["src/Types/*"],
+			"@Utils/*": ["src/Utils/*"],
+			"@Components/*": ["src/View/components/*"],
+			"@Layout/*": ["src/View/layout/*"],
+			"@Modules/*": ["src/View/modules/*"],
+			"@Pages/*": ["src/View/pages/*"],
+			"@Section/*": ["src/View/section/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
