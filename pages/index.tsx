@@ -1,11 +1,11 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { withLayout } from '@Layout/Layout';
 import { CustomHead } from '@Modules/CustomHead';
 import { QueryClient, dehydrate, useQuery } from 'react-query';
 import { DataService } from '@Services/DataService';
 
 const Home: NextPage = () => {
-	const { data, isSuccess } = useQuery('res', () => DataService.getRes(1));
+	const { data, isSuccess } = useQuery(['post', 1], () => DataService.getPost(1));
 	return (
 		<>
 			<CustomHead
@@ -20,16 +20,17 @@ const Home: NextPage = () => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const queryClient = new QueryClient();
 
-	await queryClient.prefetchQuery('res', () => DataService.getRes(1));
+	await queryClient.prefetchQuery(['post', 1], () => DataService.getPost(1));
 
 	return {
 		props: {
 			dehydratedState: dehydrate(queryClient),
 			currency: 'USD'
-		}
+		},
+		revalidate: 1
 	};
 };
 

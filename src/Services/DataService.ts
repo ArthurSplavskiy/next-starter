@@ -1,5 +1,5 @@
-import { getRes } from '@GraphQL/Queries/getRecords';
+import { getPost } from '@GraphQL/Queries/getPost';
 
 export const DataService = {
-	getRes
+	getPost
 };

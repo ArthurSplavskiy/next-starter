@@ -1,10 +1,10 @@
 import { gql } from 'graphql-request';
 import { makeGraphqlRequest } from '@GraphQL/makeGraphqlRequest';
 
-export const getRes = async (id: number) => {
+export const getPost = async (id: number) => {
 	const query = gql`
-			query getRes($id: ID) {
-				restaurant(id: $id) {
+			query getPost($id: ID) {
+				post(id: $id) {
 					data {
 						attributes {
 							name
@@ -18,7 +18,7 @@ export const getRes = async (id: number) => {
 		id: id || 1
 	};
 
-	const { restaurant } = await makeGraphqlRequest(query, variables);
+	const { post } = await makeGraphqlRequest(query, variables);
 
-	return restaurant;
+	return post;
 };
